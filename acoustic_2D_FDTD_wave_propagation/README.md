@@ -1,15 +1,15 @@
 # **Simple FDTD wave propagation in 2D acoustic isotropic medium**
 
-Single-file vectorized implementation of acoustic wave propagation in MATLAB. The program is solving second-order wave equation in pressure formulation. We don't account for derivatives of model parameters. Modelling area is surrounded by simple absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
+Single-file vectorized implementation of acoustic wave propagation in MATLAB. The program is solving second-order wave equation in pressure formulation. Modelling area is surrounded by simple absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
 
-![Wavefield example](doc/snap.jpg)
+![Wavefield example](img/snap.jpg)
 
 ### **DISCRETIZATION DETAILS**:
 * Finite-Differences in Time Domain (FDTD)
 * Explicit time stepping
 * O(2,2)
 * Conventional stencils derived from Taylor series: 
-    * in space [1: -2 :1]/dx2 and [1: -1: -1:1]/4dxdz
+    * in space [1: -2 :1]/dx2
     * in time [1: -2 :1]/dt2
 
 ### **MODEL DETAILS**

@@ -1,6 +1,6 @@
 # **SIMPLE FDTD WAVE PROPAGATION IN MATLAB**
 
-Single-file vectorized implementation of wave propagation in MATLAB. We solve second-order wave equation in displacement formulation in time domain(FDTD). We don't account for derivatives of elastic parameters to keep it siple. Medium is surrounded by absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
+Single-file vectorized implementations of wave propagation in MATLAB. We solve second-order wave equation in displacement formulation in time domain(FDTD). We don't account for derivatives of elastic parameters to keep it simple. Medium is surrounded by simple absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
 
 ![Wavefield examples](docs/assets/snap_all.jpg)
 

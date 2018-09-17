@@ -1,8 +1,8 @@
 # **Simple acoustic FDTD wave propagation in 3D medium**
 
-Single-file vectorized implementation of acoustic wave propagation in isotropic medium in MATLAB. The program is solving second-order wave equation in displacement formulation. We don't account for derivatives of elastic parameters. Modelling area is surrounded by simple absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
+Single-file vectorized implementation of acoustic wave propagation in isotropic medium in MATLAB. The program is solving second-order wave equation in displacement formulation. Modelling area is surrounded by simple absorbing sponge boundaries with exponential decay (Cerjan, 1985). 
 
-![Wavefield example](doc/snap.jpg)
+![Wavefield example](img/snap.jpg)
 
 ### **DISCRETIZATION DETAILS**:
 * Finite-Differences in Time Domain (FDTD)
