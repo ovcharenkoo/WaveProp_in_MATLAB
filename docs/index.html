@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Simple single-file codes for wave propagation in MATLAB. Implementation is using finite-differences in time domain. Good for beginners, too simple for advanced.">
+    <meta name="keywords" content="wave, propagation, MATLAB, fdtd, finite, differences, simple, seismic, electric">
+    <meta name="author" content="Oleg Ovcharenko">
+
+    <link rel="icon" href="favicon.ico">
+    <title>WaveProp in MATLAB</title>
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap_lux.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container h-100">
+        <br>
+        <h1>Simple FDTD Wave propagation in MATLAB</h1>
+        <p>Single-file codes in MATLAB for acoustic and elastic wave propagation in time domain using finite-difference
+            approximation(FDTD). As simple formulation and implementation as possible. Just for fun and to have all
+            these codes in one place.</p>
+        <hr>
+        <div class="row row-eq-height">
+
+            <!-- ACOUSTIC 2D -->
+            <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
+                <div class="justify-content-center">
+                    <h2>Acoustic</h2>
+                    <p>Only <span id="lbl-velocity">P waves</span> propagate in acoustic medium. Parametrized by
+                        compressional wave velocity <span id="lbl-velocity">Vp</span> only.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-stretch">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_ac2diso.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Acoustic 2D isotropic</h5>
+                            <p class="card-text">
+                                <!-- FDTD O(2,2) -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- ACOUSTIC 3D -->
+            <div class="col d-flex align-items-stretch">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_ac3diso.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Acoustic 3D isotropic</h5>
+                            <p class="card-text">
+                                <!-- Some quick example text to build on the card title and make up the bulk of the card's content. -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ELASTIC 2D -->
+        <div class="row row-eq-height">
+            <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
+                <div class="justify-content-center">
+                    <h2>Elastic</h2>
+                    <p><span id="lbl-velocity">P and S waves</span> propagate in elastic medium. It is parametrized by
+                        compressional <span id="lbl-velocity">Vp</span> and shear <span id="lbl-velocity">Vs</span>
+                        wave velocities.</p>
+                </div>
+            </div>
+            <div class="col ">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_el2diso.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Elastic 2D isotropic</h5>
+                            <p class="card-text">
+                                <!-- Some quick example text to build on the card title and make up the
+                                bulk of
+                                the card's content. -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- ELASTIC 3D -->
+            <div class="col">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_el3diso.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Elastic 3D isotropic</h5>
+                            <p class="card-text">
+                                <!-- Some quick example text to build on the card title and make up the
+                                bulk of
+                                the card's content. -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+        <!-- ANISOTROPY -->
+        <!-- ELASTIC 2D -->
+        <div class="row row-eq-height">
+            <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
+                <div class="justify-content-center">
+                    <h2>Bonus:</h2>
+                    <h2>ELASTIC TI</h2>
+                    <p><span id="lbl-velocity"> Transverse isotropy is typically observed in layered media. In this case wave propagation goes with different velocities in the in-plane and cross-plane directions. It is parametrized by four parameters in 2D and by five in 3D.</p>
+                </div>
+            </div>
+            <div class="col ">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_el2dani.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Elastic 2D TI</h5>
+                            <p class="card-text">
+                                <!-- Some quick example text to build on the card title and make up the
+                            bulk of
+                            the card's content. -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- ELASTIC 3D -->
+            <div class="col">
+                <a href="https://github.com/ovcharenkoo/Acoustic_FDTD_3D_wave_propagation">
+                    <div class="card" id="card-custom">
+                        <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_el3dani.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="card-title-custom">Elastic 3D VTI</h5>
+                            <p class="card-text">
+                                <!-- Some quick example text to build on the card title and make up the
+                            bulk of
+                            the card's content. -->
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Github</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <hr>
+        <p><a href="mailto:oleg.ovcharenko@kaust.edu.sa">oleg.ovcharenko@kaust.edu.sa</a></p>
+        <p><a href="mailto:vladimir.kazei@kaust.edu.sa">vladimir.kazei@kaust.edu.sa</a></p>
+        <p>King Abdullah University of Science and Technology, 2018</p>
+
+        <br><br>
+    </div>
+
+    <!-- LINK JQUERY -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <!-- SHADOW FOR .CARD CLASS -->
+    <script>
+        $(document).ready(function () {
+            // executes when HTML-Document is loaded and DOM is ready
+            console.log("document is ready");
+
+
+            $(".card").hover(
+                function () {
+                    $(this).addClass('shadow-lg').css('cursor', 'pointer');
+                }, function () {
+                    $(this).removeClass('shadow-lg');
+                }
+            );
+
+            // document ready  
+        });
+    </script>
+</body>
+
+</html>

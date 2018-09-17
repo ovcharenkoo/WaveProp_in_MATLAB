@@ -1,0 +1,26 @@
+/* body { padding-top: 88px; } */
+
+p{
+    font-size: 0.9rem;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#card-title-custom{
+    font-weight: bold;
+}
+
+#card-custom{
+    /*width: 18rem; */
+    margin-bottom: 1rem;
+}
+
+#lbl-velocity{
+    font-weight: bold;
+}
+/* #card-img-custom{
+    height: 10rem;
+    width: auto;
+} */
