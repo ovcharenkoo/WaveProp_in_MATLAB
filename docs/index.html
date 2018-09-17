@@ -21,9 +21,7 @@
     <div class="container h-100">
         <br>
         <h1>Simple FDTD Wave propagation in MATLAB</h1>
-        <p>Single-file codes in MATLAB for acoustic and elastic wave propagation in time domain using finite-difference
-            approximation(FDTD). As simple formulation and implementation as possible. Just for fun and to have all
-            these codes in one place.</p>
+        <p>Single-file codes in MATLAB for acoustic and elastic wave propagation in time domain using finite-differencen approximation(FDTD). We solve second-order wave equation in displacement formulation with generic collocated scheme, second order both in space and time, O(2,2). We also apply boundary conditions with exponential decay (Cerjan, 1985).  <span id="lbl-velocity">Simple, made for beginners</span>.</p>
         <hr>
         <div class="row row-eq-height">
 
@@ -31,8 +29,7 @@
             <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
                 <div class="justify-content-center">
                     <h2>Acoustic</h2>
-                    <p>Only <span id="lbl-velocity">P waves</span> propagate in acoustic medium. Parametrized by
-                        compressional wave velocity <span id="lbl-velocity">Vp</span> only.</p>
+                    <p>Only <span id="lbl-velocity">P waves</span> propagate in acoustic medium. Compressional wave velocity <span id="lbl-velocity">Vp</span> is used to parametrize the medium. Scalar constant-density wave equation is solved for pressure.</p>
                 </div>
             </div>
             <div class="col d-flex align-items-stretch">
@@ -74,9 +71,8 @@
             <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
                 <div class="justify-content-center">
                     <h2>Elastic</h2>
-                    <p><span id="lbl-velocity">P and S waves</span> propagate in elastic medium. It is parametrized by
-                        compressional <span id="lbl-velocity">Vp</span> and shear <span id="lbl-velocity">Vs</span>
-                        wave velocities.</p>
+                    <p><span id="lbl-velocity">P and S waves</span> propagate in elastic medium. Compressional <span id="lbl-velocity">Vp</span> and shear <span id="lbl-velocity">Vs</span>
+                        wave velocities and density are used as parameters. Derivatives of elastic parameters are neglected.</p>
                 </div>
             </div>
             <div class="col ">
@@ -125,8 +121,8 @@
             <div class="col ml-auto d-flex align-items-center mt-4 mt-md-0">
                 <div class="justify-content-center">
                     <h2>Bonus:</h2>
-                    <h2>ELASTIC TI</h2>
-                    <p><span id="lbl-velocity"> Transverse isotropy is typically observed in layered media. In this case wave propagation goes with different velocities in the in-plane and cross-plane directions. It is parametrized by density and four elastic parameters in 2D and by five in 3D.</p>
+                    <h2>ELASTIC VTI</h2>
+                    <p><span id="lbl-velocity"> Vertical transverse-isotropy is typically observed in layered media. In this case waves propagate with different velocities in horizontal and vertical directions. Medium is parametrized by density and four elastic parameters in 2D and by five elastic parameters in 3D.</p>
                 </div>
             </div>
             <div class="col ">
@@ -134,7 +130,7 @@
                     <div class="card" id="card-custom">
                         <img class="card-img-top img-fluid" id="card-img-custom" src="assets/snap_el2dani.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" id="card-title-custom">Elastic 2D TI</h5>
+                            <h5 class="card-title" id="card-title-custom">Elastic 2D VTI</h5>
                             <p class="card-text">
                                 <!-- Some quick example text to build on the card title and make up the
                             bulk of
