@@ -19,6 +19,6 @@ Single-file vectorized implementation of acoustic wave propagation in isotropic 
 ### **HOW TO USE**: 
 Run `acoustic_3D_FDTD_O22.m` in MATLAB
 
-oleg.ovcahrenko@kaust.edu.sa
+oleg.ovcharenko@kaust.edu.sa
 
 vladimir.kazei@kaust.edu.sa

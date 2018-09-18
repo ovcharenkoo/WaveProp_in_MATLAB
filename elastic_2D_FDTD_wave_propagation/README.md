@@ -19,6 +19,6 @@ Single-file vectorized implementation of elastic wave propagation in MATLAB. The
 ### **HOW TO USE**: 
 Run `elastic_2D_FDTD_O22.m` in MATLAB
 
-oleg.ovcahrenko@kaust.edu.sa
+oleg.ovcharenko@kaust.edu.sa
 
 vladimir.kazei@kaust.edu.sa

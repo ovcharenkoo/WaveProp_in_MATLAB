@@ -21,6 +21,6 @@ Single-file vectorized implementation of elastic wave propagation a medium with 
 ### **HOW TO USE**: 
 Run `elastic_3D_FDTD_O22_VTI.m` in MATLAB
 
-oleg.ovcahrenko@kaust.edu.sa
+oleg.ovcharenko@kaust.edu.sa
 
 vladimir.kazei@kaust.edu.sa

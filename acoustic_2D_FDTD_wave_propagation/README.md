@@ -19,6 +19,6 @@ Single-file vectorized implementation of acoustic wave propagation in MATLAB. Th
 ### **HOW TO USE**: 
 Run `acoustic_2D_FDTD_O22.m` in MATLAB
 
-oleg.ovcahrenko@kaust.edu.sa
+oleg.ovcharenko@kaust.edu.sa
 
 vladimir.kazei@kaust.edu.sa
