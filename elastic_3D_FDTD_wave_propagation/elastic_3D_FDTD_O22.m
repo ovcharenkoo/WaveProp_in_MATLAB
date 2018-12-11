@@ -86,6 +86,7 @@ force_z = sin(angle_force * deg2rad) * source_signal * dt2rho_src / (dx * dy * d
 force_z = zeros(size(force_z));
 
 % moment tensor source signature is the same
+% use moment tensor instead of force 1, 0 - use force
 mt.flag = 1;
 mt.xx = 1;
 mt.yy = 1;
