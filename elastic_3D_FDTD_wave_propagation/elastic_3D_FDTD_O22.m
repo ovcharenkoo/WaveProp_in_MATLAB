@@ -86,6 +86,7 @@ force_z = sin(angle_force * deg2rad) * source_signal * dt2rho_src / (dx * dy * d
 force_z = zeros(size(force_z));
 
 % moment tensor source signature is the same
+mt.flag = 1;
 mt.xx = 1;
 mt.yy = 1;
 mt.zz = 1;
@@ -258,10 +259,11 @@ for it = 1:nt
     uy3(2:end-1,2:end-1,2:end-1) = 2.0*uy2(2:end-1,2:end-1,2:end-1) - uy1(2:end-1,2:end-1,2:end-1) + sigmas_uy.*dt2rho;
     uz3(2:end-1,2:end-1,2:end-1) = 2.0*uz2(2:end-1,2:end-1,2:end-1) - uz1(2:end-1,2:end-1,2:end-1) + sigmas_uz.*dt2rho;
 %     % Add source term
-%     ux3 = ux3 + dist4pr * force_x(it);
-%     uy3 = uy3 + dist4pr * force_y(it);
-%     uz3 = uz3 + dist4pr * force_z(it);
-    
+    if ~mt.flag
+     ux3 = ux3 + dist4pr * force_x(it);
+     uy3 = uy3 + dist4pr * force_y(it);
+     uz3 = uz3 + dist4pr * force_z(it);
+    else
     % moment tensor as naive fources
     ux3(2:end-1,2:end-1,2:end-1) = ux3(2:end-1,2:end-1,2:end-1) + force_x(it)* ...
         (mt.xx * d_x(dist4pr) + mt.xy * d_y(dist4pr) + mt.xz * d_z(dist4pr));
@@ -271,7 +273,7 @@ for it = 1:nt
     
     uz3(2:end-1,2:end-1,2:end-1) = uz3(2:end-1,2:end-1,2:end-1) + force_x(it)*...
         (mt.zz * d_z(dist4pr) + mt.yz * d_y(dist4pr) + mt.xz * d_x(dist4pr));
-           
+    end       
     % Exchange between t-2(1), t-1(2) and t(3) and apply ABS
     ux1 = ux2 .* weights;
     ux2 = ux3 .* weights;
