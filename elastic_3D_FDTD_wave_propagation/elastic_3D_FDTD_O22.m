@@ -43,9 +43,9 @@ IT_DISPLAY = 40;
 nx = 101;
 ny = 101;
 nz = 101;
-dx = 20;
-dy = 20;
-dz = 20;
+dx = 10;
+dy = 10;
+dz = 10;
 
 % Elastic parameters
 vp = 3300.0 * ones(nz,ny,nx);       % velocity of compressional waves, [m/s]
@@ -57,16 +57,16 @@ lam = rho.*(vp.^2 - 2*vs.^2);       % first Lame parameter
 mu =  rho.*vs.^2;                   % shear modulus, [N/m2]
 
 %% TIME STEPPING
-t_total = .4;                       % [sec] recording duration
-dt = 0.6 * min(dx,dz)/sqrt(max(vp(:))^2 + 2 * max(vs(:))^2);
+t_total = 0.20;                       % [sec] recording duration
+dt = 0.1 * min(dx,dz)/sqrt(max(vp(:))^2 + 2 * max(vs(:))^2);
 nt = round(t_total/dt);             % number of time steps
 t = [0:nt]*dt;
 
 %% SOURCE PARAMETERS
-f0 = 5.0;                           % dominant frequency of the wavelet
+f0 = 15.0;                           % dominant frequency of the wavelet
 t0 = 1.20 / f0;                     % excitation time
 factor = 1e10;                      % amplitude coefficient
-angle_force = 90.0;                 % spatial orientation
+angle_force = 90.0;                 % spatial orientation 90 - along x axis
 
 isrc = round(nx/2);                 % source location along OX
 jsrc = round(ny/2);                 % source location along OY
@@ -75,15 +75,25 @@ ksrc = round(nz/2);                 % source location along OZ
 deg2rad = pi / 180.d0;              % convert degrees to radians
 a = pi*pi*f0*f0;
 dt2rho_src = dt^2/rho(ksrc,jsrc,isrc);
-% source_term = factor * exp(-a*(t-t0).^2);                                % Gaussian
-% source_term =  -factor*2.0*a*(t-t0)*exp(-a*(t-t0)^2);                    % First derivative of a Gaussian:
-source_term = -factor * (1.0 - 2.0*a*(t-t0).^2).*exp(-a*(t-t0).^2);        % Ricker source time function (second derivative of a Gaussian):
+% source_signal = factor * exp(-a*(t-t0).^2);                                % Gaussian
+% source_signal =  -factor*2.0*a*(t-t0)*exp(-a*(t-t0)^2);                    % First derivative of a Gaussian:
+source_signal = -factor * (1.0 - 2.0*a*(t-t0).^2).*exp(-a*(t-t0).^2);        % Ricker source time function (second derivative of a Gaussian):
 
-force_x = sin(angle_force * deg2rad) * source_term * dt2rho_src / (dx * dy * dz);
-force_y = cos(angle_force * deg2rad) * source_term * dt2rho_src / (dx * dy * dz);
-force_z = sin(angle_force * deg2rad) * source_term * dt2rho_src / (dx * dy * dz);
+force_x = sin(angle_force * deg2rad) * source_signal * dt2rho_src / (dx * dy * dz);
+force_y = cos(angle_force * deg2rad) * source_signal * dt2rho_src / (dx * dy * dz);
+force_z = sin(angle_force * deg2rad) * source_signal * dt2rho_src / (dx * dy * dz);
 % Comment the line below if need 3 component force source
 force_z = zeros(size(force_z));
+
+% moment tensor source signature is the same
+mt.xx = 1;
+mt.yy = 1;
+mt.zz = 1;
+mt.xy = 0;
+mt.xz = 0;
+mt.yz = 0;
+mt.factor = factor;
+mt.source_signal = source_signal;
 
 %% OTHER
 CFL = max(vp(:)) * dt / min(dx,dz);     % Courant number, should be < 1
@@ -120,6 +130,8 @@ end
 
 % Exponential source amplitude decay
 dist4pr = exp(-(dist.^2)/2);
+
+
 
 %% ABSORBING BOUNDARY (ABS)
 % Thickness of the layer
@@ -245,10 +257,21 @@ for it = 1:nt
     ux3(2:end-1,2:end-1,2:end-1) = 2.0*ux2(2:end-1,2:end-1,2:end-1) - ux1(2:end-1,2:end-1,2:end-1) + sigmas_ux.*dt2rho;
     uy3(2:end-1,2:end-1,2:end-1) = 2.0*uy2(2:end-1,2:end-1,2:end-1) - uy1(2:end-1,2:end-1,2:end-1) + sigmas_uy.*dt2rho;
     uz3(2:end-1,2:end-1,2:end-1) = 2.0*uz2(2:end-1,2:end-1,2:end-1) - uz1(2:end-1,2:end-1,2:end-1) + sigmas_uz.*dt2rho;
-    % Add source term
-    ux3 = ux3 + dist4pr * force_x(it);
-    uy3 = uy3 + dist4pr * force_y(it);
-    uz3 = uz3 + dist4pr * force_z(it);
+%     % Add source term
+%     ux3 = ux3 + dist4pr * force_x(it);
+%     uy3 = uy3 + dist4pr * force_y(it);
+%     uz3 = uz3 + dist4pr * force_z(it);
+    
+    % moment tensor as naive fources
+    ux3(2:end-1,2:end-1,2:end-1) = ux3(2:end-1,2:end-1,2:end-1) + force_x(it)* ...
+        (mt.xx * d_x(dist4pr) + mt.xy * d_y(dist4pr) + mt.xz * d_z(dist4pr));
+    
+    uy3(2:end-1,2:end-1,2:end-1) = uy3(2:end-1,2:end-1,2:end-1) + force_x(it)* ...
+        (mt.yy * d_y(dist4pr) + mt.xy * d_x(dist4pr) + mt.yz * d_z(dist4pr));
+    
+    uz3(2:end-1,2:end-1,2:end-1) = uz3(2:end-1,2:end-1,2:end-1) + force_x(it)*...
+        (mt.zz * d_z(dist4pr) + mt.yz * d_y(dist4pr) + mt.xz * d_x(dist4pr));
+           
     % Exchange between t-2(1), t-1(2) and t(3) and apply ABS
     ux1 = ux2 .* weights;
     ux2 = ux3 .* weights;
