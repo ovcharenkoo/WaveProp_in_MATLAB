@@ -12,6 +12,6 @@ Single-file vectorized implementations of wave propagation in MATLAB. We solve s
     * in space [1: -2 :1]/dx2 and [1: -1: -1:1]/4dxdz
     * in time [1: -2 :1]/dt2
 
-oleg.ovcahrenko@kaust.edu.sa
+oleg.ovcharenko@kaust.edu.sa
 
 vladimir.kazei@kaust.edu.sa
