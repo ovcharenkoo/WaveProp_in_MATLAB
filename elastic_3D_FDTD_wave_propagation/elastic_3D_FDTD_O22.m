@@ -36,7 +36,7 @@
 
 close all;
 % Output every ... time steps
-IT_DISPLAY = 40;
+IT_DISPLAY = 100;
 
 %% MODEL
 % Model dimensions, [m]
@@ -87,7 +87,7 @@ force_z = zeros(size(force_z));
 
 % moment tensor source signature is the same
 % use moment tensor instead of force 1, 0 - use force
-mt.flag = 1;
+mt.flag = 0;
 mt.xx = 1;
 mt.yy = 1;
 mt.zz = 1;
