@@ -272,7 +272,7 @@ for it = 1:nt
         h1 = slice(up, round(nx/2), round(ny/2), round(nz/2));
         set(h1,'edgecolor','none');
         alpha(h1,0.6); axis equal tight; colormap jet;
-        xlabel('OX'); ylabel('OY'); zlabel('OZ'); axis equal tight;
+        xlabel('OX, m'); ylabel('OY, m'); zlabel('OZ, m'); axis equal tight;
         title(['Step = ',num2str(it),'/',num2str(nt),', Time: ',sprintf('%.4f',t(it)),' sec']);
         set(gca,'ZDir','reverse'); view(52,24); grid off;
         ax_len = round(0.1 * min(nz,min(ny,nx)));

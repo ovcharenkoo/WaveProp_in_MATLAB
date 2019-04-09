@@ -142,7 +142,7 @@ for it = 1:nt
     if mod(it,IT_DISPLAY) == 0
         fprintf('Time step: %d \t %.4f s\n',it, single(t(it)));
         imagesc(p3); colorbar; 
-        axis equal tight; colormap jet;
+        axis equal tight; colormap jet; xlabel('m'); ylabel('m');
         title(['Step = ',num2str(it),'/',num2str(nt),', Time: ',sprintf('%.4f',t(it)),' sec']);
         drawnow;
     end

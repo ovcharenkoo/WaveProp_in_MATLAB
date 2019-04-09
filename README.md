@@ -6,6 +6,7 @@ Single-file vectorized implementations of wave propagation in MATLAB. We solve s
 
 ### **DISCRETIZATION DETAILS**:
 * Finite-Differences in Time Domain (FDTD)
+* Regular collocated grid
 * Explicit time stepping
 * O(2,2)
 * Conventional stencils derived from Taylor series: 
